@@ -1,5 +1,5 @@
 import { Parser } from 'node-sql-parser';
-import { ITable, IColumn, IRelationship, ISchemaMetadata } from '../types/schema';
+import { ITable, IColumn, IRelationship, ISchemaMetadata } from '../../types/schema';
 
 /**
  * Parses SQL DDL files and extracts schema metadata
@@ -276,7 +276,7 @@ export class SchemaParser {
         
         // Check if PK consists only of FK columns
         const isPKOnlyFKs = pkColumns.length === allFKColumns.length &&
-          pkColumns.every(pk => allFKColumns.includes(pk));
+          pkColumns.every((pk: string) => allFKColumns.includes(pk));
         
         if (isPKOnlyFKs) {
           // Mark relationships as many-to-many

@@ -74,18 +74,19 @@ ipcMain.handle('import-schema', async () => {
     const content = await fs.readFile(filePath, 'utf-8');
     
     schemaParser = new SchemaParser('mysql');
-    currentSchema = schemaParser.parseSchema(content);
+    const parsedSchema = schemaParser.parseSchema(content);
+    currentSchema = parsedSchema;
     
-    queryBuilder = new QueryBuilder(currentSchema);
+    queryBuilder = new QueryBuilder(parsedSchema);
     aliasManager = new AliasManager();
     await aliasManager.loadAliases();
 
     return {
       success: true,
       schema: {
-        tables: Array.from(currentSchema.tables.values()),
-        relationships: currentSchema.relationships,
-        databaseType: currentSchema.databaseType
+        tables: Array.from(parsedSchema.tables.values()),
+        relationships: parsedSchema.relationships,
+        databaseType: parsedSchema.databaseType
       }
     };
   } catch (error) {

@@ -1,4 +1,4 @@
-import { IRelationship, ITableNode, ISchemaMetadata } from '../types/schema';
+import { IRelationship, ITableNode, ISchemaMetadata } from '../../types/schema';
 
 /**
  * Graph-based representation of table relationships

@@ -2,11 +2,12 @@ import {
   IColumnSelection,
   IGeneratedQuery,
   IJoinClause,
+  IJoinCondition,
   IRelationship,
   ISchemaMetadata,
   IDisconnectedGroup,
   JoinType
-} from '../types/schema';
+} from '../../types/schema';
 import { RelationshipGraph } from '../graph/RelationshipGraph';
 import { PathFinder } from '../graph/PathFinder';
 
@@ -157,7 +158,7 @@ export class QueryBuilder {
       type: joinType,
       leftTable: rel.fromTable,
       rightTable: rel.toTable,
-      conditions: rel.fromColumns.map((fromCol, index) => ({
+      conditions: rel.fromColumns.map((fromCol: string, index: number): IJoinCondition => ({
         leftColumn: `${rel.fromTable}.${fromCol}`,
         rightColumn: `${rel.toTable}.${rel.toColumns[index]}`,
         operator: '=' as const
@@ -170,7 +171,7 @@ export class QueryBuilder {
    */
   private formatJoinClause(join: IJoinClause): string {
     const conditions = join.conditions
-      .map(cond => `${cond.leftColumn} ${cond.operator} ${cond.rightColumn}`)
+      .map((cond: IJoinCondition) => `${cond.leftColumn} ${cond.operator} ${cond.rightColumn}`)
       .join(' AND ');
 
     return `${join.type} JOIN ${join.rightTable} ON ${conditions}`;
@@ -202,7 +203,7 @@ export class QueryBuilder {
         errors.push(`Table "${sel.tableName}" not found in schema`);
       } else {
         const table = this.schema.tables.get(sel.tableName)!;
-        const columnExists = table.columns.some(col => col.name === sel.columnName);
+        const columnExists = table.columns.some((col) => col.name === sel.columnName);
         if (!columnExists) {
           errors.push(`Column "${sel.columnName}" not found in table "${sel.tableName}"`);
         }

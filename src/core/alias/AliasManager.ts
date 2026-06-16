@@ -1,4 +1,4 @@
-import { IColumnAlias, IAliasConfiguration } from '../types/schema';
+import { IColumnAlias, IAliasConfiguration } from '../../types/schema';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 

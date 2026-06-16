@@ -1,4 +1,4 @@
-import { IRelationship, IPathNode } from '../types/schema';
+import { IRelationship, IPathNode } from '../../types/schema';
 import { RelationshipGraph } from './RelationshipGraph';
 
 /**
