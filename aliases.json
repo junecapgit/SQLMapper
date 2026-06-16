@@ -1,0 +1,40 @@
+{
+  "aliases": [
+    {
+      "tableId": "process_activity_hdr",
+      "tableName": "process_activity_hdr",
+      "columnId": "pah_id",
+      "columnName": "pah_id",
+      "alias": "ActivityId"
+    },
+    {
+      "tableId": "process_activity_hdr",
+      "tableName": "process_activity_hdr",
+      "columnId": "pah_pro_id",
+      "columnName": "pah_pro_id",
+      "alias": "ProcessType"
+    },
+    {
+      "tableId": "process_activity_dtl",
+      "tableName": "process_activity_dtl",
+      "columnId": "pad_proc_seq",
+      "columnName": "pad_proc_seq",
+      "alias": "SequenceNumber"
+    },
+    {
+      "tableId": "process_activity_dtl",
+      "tableName": "process_activity_dtl",
+      "columnId": "pad_proc_index",
+      "columnName": "pad_proc_index",
+      "alias": "IndexNumber"
+    },
+    {
+      "tableId": "process_activity_hdr",
+      "tableName": "process_activity_hdr",
+      "columnId": "pah_interface_id",
+      "columnName": "pah_interface_id",
+      "alias": "TransactionId"
+    }
+  ],
+  "lastModified": "2026-02-17T21:57:36.134Z"
+}
